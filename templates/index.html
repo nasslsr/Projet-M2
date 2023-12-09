@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swan Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 50px;
+        }
+        .form-container {
+            width: 50%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+        select, input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        Swan
+    </div>
+    <div class="form-container">
+        <form action="/execute_query" method="post">
+            <label for="source-db">Database Source:</label>
+            <select name="source-db">
+            {% for db in db_list %}
+                  <option value="{{ db.datname }}">{{ db.datname }}</option>
+            {% endfor %}
+            </select>
+            <label for="target-db">Database Target:</label>
+            <select name="target-db">
+            {% for db in db_list %}
+                   <option value="{{ db.datname }}">{{ db.datname }}</option>
+            {% endfor %}
+            </select>
+
+
+            <label for="sql-query">SQL Query:</label>
+            <input type="text" id="sql-query" name="sql-query">
+
+            <input type="submit" value="Execute Query">
+        </form>
+    </div>
+
+    <div class="form-container">
+        <form action="/show_table" method="post">
+
+            <label for="source-db-data">Database Source:</label>
+            <select name="source-db-data">
+            {% for db in db_list %}
+                  <option value="{{ db.datname }}">{{ db.datname }}</option>
+            {% endfor %}
+            </select>
+            <label for="target-db-data">Database Target:</label>
+            <select name="target-db-data">
+            {% for db in db_list %}
+                   <option value="{{ db.datname }}">{{ db.datname }}</option>
+            {% endfor %}
+            </select>
+
+            <label for="table-name">Enter a Table Name:</label>
+            <input type="text" id="table-name" name="table-name">
+
+            <input type="submit" value="Show Table Data">
+        </form>
+    </div>
+</body>
+</html>
