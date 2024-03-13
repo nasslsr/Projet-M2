@@ -310,3 +310,4 @@ def continuous_ddl_replication_mysql(source_db, target_db, syst_dest, table_dest
 
 if __name__ == '__main__':
     app.run(debug=True, port=5432)
+    

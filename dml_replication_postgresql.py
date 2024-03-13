@@ -5,9 +5,7 @@ import mysql.connector
 import redshift_connector
 import logging
 
-
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
 
 
 def fetch_changes_from_slot(conn, slot_name):
